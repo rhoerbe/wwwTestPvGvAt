@@ -28,7 +28,9 @@ link:how-to-SP.html[SP zur Testföderation hinzufügen]
 |Metadatenverwaltung | Anfrage an Webmaster at portalverbund.gv.at
 |Metadatenvalidierung | http://mdval.test.portalverbund.at/
 |Metadatenpublikation |http://mdfeed.test.portalverbund.gv.at/
-|SP5 Echo-Service mit fix eingestelltem IdP | https://sp5.test.portalverbund.gv.at/
+|Echo-Service mit fix eingestelltem IdP | https://echo.test.portalverbund.gv.at/
+|Echo-Service mit zentralem Discovery Service | https://sp3.test.portalverbund.gv.at/
+|Echo-Service mit embedded Discovery Service | https://sp5.test.portalverbund.gv.at/
 |Test IdP | https://idp5.test.portalverbund.gv.at/idp/profile/Status
 |====================
 
