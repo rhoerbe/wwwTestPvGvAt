@@ -1,16 +1,15 @@
 = Verwaltungportalverbund Testföderation (Home)
 
 .Zweck
-Zweck der Testfedertion ist die Interoperabilität und Konformität von SPs und IdPs
-zu prüfen. Damit soll erreicht werden, dass Produkte auf ihre Konformität mit PVP2 getestet werden
-können, Konfigurationsprobleme erkannt werden bevor eine Instanz in den Produktionsbetrieb
-eingegliedert wird und Sicherheitsprobleme frühzeitig erkannt werden.
-
+Zweck der Testföderation ist die Prüfung der Interoperabilität und Konformität von SPs und IdPs.
+Damit soll erreicht werden, dass Produkte auf ihre Konformität mit dem PVP2-S SAML-Profil
+getestet werden können, Konfigurationsprobleme erkannt werden bevor eine Instanz in den
+Produktionsbetrieb eingegliedert wird und Sicherheitsprobleme frühzeitig erkannt werden.
 
 .Testmöglichkeiten
 
-* Erstellen und validieren von Metadaten
-* Einbindung eines IDP oder SP in die Testfederation (= Aufnahme des EntityDescriptors in die Metadaten)
+* Erstellen und Validieren von Metadaten
+* Einbindung eines IDP oder SP in die Testföderation (= Aufnahme des EntityDescriptors in die Metadaten)
 * IDPs
   ** Aufnahme in das IDP Discovery Service (implizit über die Metadaten)
   ** Einfacher Funktionstest mit dem Echoservice
