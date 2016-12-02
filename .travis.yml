@@ -1,0 +1,29 @@
+language: c
+
+sudo: required
+services:
+  - docker
+
+script:
+  # generate html site from jekyll/asciidoc
+  - docker run -it --rm -v $PWD:/var/data:Z rhoerbe/jekyll-adoc jekyll build
+  # memorize path to result as $REPO/_site
+  - export REPO=$PWD
+
+after_success:
+  # prepare github access with deploy key (use expect later on to pass ssh passphrase from travis-ci env to git)
+  - mkdir -p /home/travis/.ssh/
+  - cp -p .ssh/* /home/travis/.ssh/
+  - chmod 700 /home/travis/.ssh/
+  - chmod 600 /home/travis/.ssh/*
+  - sudo apt-get update && sudo apt-get install expect
+  # update _site/* in gh-pages branch
+  - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+        mkdir -p /tmp/gh-pages;
+        cd /tmp/gh-pages;
+        $REPO/git_clone.tcl;
+        cp -pr $REPO/_site/* .;
+        git add -A;
+        git commit -m 'generated';
+        $REPO/git_push.tcl;
+    fi

@@ -1,0 +1,47 @@
+# Site title and subtitle. This is used in _includes/header.html
+title: PVP2-S Testumgebung
+
+email: office@identinetics.com
+description: Verwaltungsportalverbund Testumgebung für PVP2-S Profil
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://www.test.portalverbund.gv.at" # the base url for your site
+
+exclude:
+exclude:
+  - .idea/
+  - .gitignore
+  - README.adoc
+  - Gemfile
+  - Gemfile.lock
+  - git_clone.tcl
+  - git_push.tcl
+  - Makefile
+  - Rakefile
+
+# Build settings
+asciidoc:
+  processor: asciidoctor
+  ext: asciidoc,adoc
+  template_dir: _templates
+
+asciidoctor:
+  base_dir: :docdir
+  safe: unsafe
+  attributes:
+    - idseparator=_
+    - source-highlighter=coderay
+    - icons=font
+
+gems:
+  - jekyll-asciidoc
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      use_jumbotron: "no"
+      show_on_menu: "yes"

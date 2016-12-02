@@ -1,0 +1,12 @@
+# Static Website Content for www.test.wpv.portalverbund.at
+
+This is the source repository for the web site. The toolchain is as follows:
+
+1. The sources are maintained in the master branch of this repo using asciidoc with jekyll hints.
+2. The build process uses travis-ci to build the html, using following compontents:
+   ** jekyll/asciidoc packaged in a docker image (source: rhoerbe/jekyll.adoc@github)
+   ** script in .travis.yml
+   ** git scripting to upload the generated html to the gh-pages branch
+   ** The ssh key material is bundled with the repo (-> .ssh/). The passphrase is contained in the
+      travis-ci account.
+3. The web server serving the site needs to git pull the gh-pages repo in regular intervals
