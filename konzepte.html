@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Konzepte</title>
+  <meta name="description" content="Verwaltungsportalverbund Testumgebung für PVP2-S Profil">
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="canonical" href="https://www.test.portalverbund.gv.at/konzepte.html" />
+  <link rel="alternate" type="application/rss+xml" title="PVP2-S Testumgebung" href="https://www.test.portalverbund.gv.at/feed.xml" />
+</head>
+
+
+  <body>
+
+    
+<nav class="nav-primary" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+    <div class="wrap"><a href="#" id="menu-icon" class="menu-icon"><span></span></a>
+        <ul id="menu-menu" class="menu omega-nav-menu menu-primary">
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/css/main.css"></a></li>
+                
+                  <!-- yes, -->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/">Home</a></li>
+                
+                  <!-- yes, 1-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/begriffe.html">Begriffe</a></li>
+                
+                  <!-- yes, 2-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/konzepte.html">Konzepte</a></li>
+                
+                  <!-- yes, 2-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/how-to-SP.html">HowTo SP</a></li>
+                
+                  <!-- yes, 3-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/metadataupload.html">Metadaten melden</a></li>
+                
+                  <!-- yes, 4-->
+            
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="site-inner">
+      <div class="wrap">
+        <main class="content">
+  <header class="post-header">
+    <h1 class="post-title">Konzepte</h1>
+  </header>
+
+  <article class="post">
+    <div class="entry-wrap">
+      <div class="post-content">
+        <div class="sect1">
+<h2 id="föderation_technische_umsetzung">Föderation - technische Umsetzung</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In der WPV-Föderation werden IdPs und SPs mittels SAML WebSSO miteinander verbunden, sodass SPs das
+Benutzerlogin an einen oder mehrere IDPs delegieren können. Die Konfiguration der externen Entitäten
+erfolgt nur über das zentrale Metadatenservice. Die Zusammenschaltung hat mehrere Stufen:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mit dem Abschluss des Vertrags eines IdP oder SP mit dem Federation Operator können die Metadaten
+der jeweiligen Entity dem Federation Operator gemeldet werden, worauf sie im Metadata Feed der
+Federation veröffentlicht werden.</p>
+</li>
+<li>
+<p>Für die konkrete Nutzung eines IdP ist eine Freischaltung durch den SP erforderlich. Das kann
+spezifisch pro IdP, generell für alle IdPs, oder für eine Kategorie von IdPs erfolgen.</p>
+</li>
+<li>
+<p>Für die konkrete Nutzung eines IdP durch einen SP ist auch eine Freischaltung durch den IdP erforderlich. Das umfasst
+erstens die Berechtigung des SP den IdP überhaupt zu nutzten, und zweitens den Umfang der beim
+Login zu übermittelnden Attribute. Die zu übermittelnden Attribute werden im "WPV-Attribute Profil"
+definiert und über eine EntitiyCategory in den Metdaten übermittelt.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="metadaten">Metadaten</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Metadaten werden verwendet, um die Konfiguration von IDPs und SPs in einer vertrauenswürdigen Weise
+zu kommunizieren. Der Austausch erfolgt über eine zentrale Stelle, den Metadaten Aggregator, der
+vom Federation Operator betrieben wird. Der Federation Operator folgt Regeln über die Registrierung
+und signiert die gesammelten Metadaten mit seinem Signaturschlüssel.</p>
+</div>
+<div class="paragraph">
+<p>Der Austausch der Metadaten erfolgt in folgendem Prozess:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Jeder Betreiber einer Entity meldet den EntityDescriptor an den Federation Operator den
+entsprechenden EntityDescriptor.</p>
+</li>
+<li>
+<p>Der Federation Operator prüft die Daten und gibt sie, wenn OK, an den Metadata Aggregator weiter.</p>
+</li>
+<li>
+<p>Der Metadata Aggregator erstellt ein signiertes XML Dokument aus allen gültigen EntityDescriptoren,
+die dann am Metadata Feed veröffentlicht werden.</p>
+</li>
+<li>
+<p>Jede teilnehmende Entity liest regelmäßig (z.B stündlich oder öfter) die Metadaten ein, und macht dabei
+folgende Verarbeitungsschritte:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Prüfung der Signatur</p>
+</li>
+<li>
+<p>Prüfung des Signaturschlüssels</p>
+</li>
+<li>
+<p>Filterung der Entities (Blacklist oder Whitelist - das ist einer Entscheidung der Entity)</p>
+</li>
+<li>
+<p>Aktualisierung der Metadaten im laufenden Betrieb, wenn möglich vollautomatisch</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="häufige_fehler">Häufige Fehler</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="austausch_der_metadaten_direkt_zwischen_idp_und_sp">Austausch der Metadaten direkt zwischen IDP und SP</h3>
+<div class="paragraph">
+<p>Die Registrierung und Aktualisierung von Metadaten unterliegt einer Federation Policy, die vom Federaton
+Operator durchgesesetzt wird. Daher dürfen Metadaten nicht direkt zwischen Entities ausgetauscht werden.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metadata_stimmen_nicht_mit_der_lokalen_konfiguration_überein">Metadata stimmen nicht mit der lokalen Konfiguration überein</h3>
+<div class="paragraph">
+<p>Die Metadaten werden bei den meisten Produkten von der Entity automatisch erstellt und dann manuell
+ergänzt. Änderungen in den Metadaten, etwa geänderte URLs müssen auch in die lokale Konfiguration
+eingepflegt werden.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metadata_werden_nicht_geprüft_oder_regelmäßig_aktualisiert">Metadata werden nicht geprüft oder regelmäßig aktualisiert</h3>
+<div class="paragraph">
+<p>Bei der ersten Einbindung einer Entitiy fällt es u.U. nicht auf, dass Metdaten eingelesen werden
+ohne die Signatur der Metadaten zu prüfen. Das wäre jedoch ein gravierender Sicherheitsmangel.</p>
+</div>
+<div class="paragraph">
+<p>Außerdem ist zu prüfen dass am Metadata Feed geänderte Daten auch tatsächlich innerhalb einer
+definierten Periode (z.B. einer Stunde) von der Entity verarbeitet werden.</p>
+</div>
+<div class="paragraph">
+<p>Die Zertifikate in den Metadaten werden nur als Container für den Public Key der Entities verwendet.
+Der sonstige Inhalt einschließlich CRLs btz. OCSP Sperrungen wird ignoriert, da nicht die PKI, sondern
+die Metadatensignatur als Trust Root definiert ist.</p>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </article>
+</main>
+
+      </div>
+    </div>
+
+    <footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+    <div class="wrap">
+        <div class="footer-content footer-insert">
+            <p class="copyright"><a class="site-link" href="https://www.ref.gv.at/Portalverbund.577.0.html" rel="home">BLSG/AG-IZ</a></p>
+            <p class="credit"></p>
+        </div>
+    </div>
+</footer>
+
+  </body>
+
+</html>

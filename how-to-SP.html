@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HowTo SP</title>
+  <meta name="description" content="Verwaltungsportalverbund Testumgebung für PVP2-S Profil">
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="canonical" href="https://www.test.portalverbund.gv.at/how-to-SP.html" />
+  <link rel="alternate" type="application/rss+xml" title="PVP2-S Testumgebung" href="https://www.test.portalverbund.gv.at/feed.xml" />
+</head>
+
+
+  <body>
+
+    
+<nav class="nav-primary" role="navigation" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+    <div class="wrap"><a href="#" id="menu-icon" class="menu-icon"><span></span></a>
+        <ul id="menu-menu" class="menu omega-nav-menu menu-primary">
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/css/main.css"></a></li>
+                
+                  <!-- yes, -->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/">Home</a></li>
+                
+                  <!-- yes, 1-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/begriffe.html">Begriffe</a></li>
+                
+                  <!-- yes, 2-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/konzepte.html">Konzepte</a></li>
+                
+                  <!-- yes, 2-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/how-to-SP.html">HowTo SP</a></li>
+                
+                  <!-- yes, 3-->
+            
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-28 current_page_item"><a href="/metadataupload.html">Metadaten melden</a></li>
+                
+                  <!-- yes, 4-->
+            
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="site-inner">
+      <div class="wrap">
+        <main class="content">
+  <header class="post-header">
+    <h1 class="post-title">HowTo SP</h1>
+  </header>
+
+  <article class="post">
+    <div class="entry-wrap">
+      <div class="post-content">
+        <div class="sect1">
+<h2 id="einbinden_eines_service_providers">Einbinden eines Service Providers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>in die Testfederation erfolgt mittels folgender Schritte:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Export der Metadaten des SP. Dabei ist zu prüfen, dass die Metadaten den Anforderungen genügen.
+Die automatisch generierten Metadaten sind fast immer unzureichend. Beispiele für korrekte
+Metadaten sind die Entities für <a href="https://mdfeed.test.portalverbund.gv.at/unsigned/idp5TestPortalverbundGvAt_idpXml.xml">idp5.test.portalverbund.gv.at</a> (IDP) und
+<a href="https://mdfeed.test.portalverbund.gv.at/unsigned/sp1TestWpvPortalverbundAt_spXml/ed.xml">sp1.test.portalverbund.gv.at</a> (SP).
+Man findet Sie auch mit der Suchfunktion im MDX-Service.
+Typische Mängel sind:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>entityID ist kein URI (beginnt nicht mit http://, https:// oder urn://)</p>
+</li>
+<li>
+<p>Fehlende EntityCategory: Welche Attribute zwischen IDP und SP ausgetauscht werden wird über die
+EntityCategory angegeben, das ist derzeit http://www.ref.gv.at/ns/names/agiz/pvp/egovtoken und
+http://www.ref.gv.at/ns/names/agiz/pvp/no-attributes. Andere Attributangaben in den Metadaten
+sind nicht maßgeblich und sollten daher entfernt werden.</p>
+</li>
+<li>
+<p>In den mdui: Elementen sind sinnvolle Angaben zu ergänzen, um automatisches IDP- und Service
+Discovery zu steuern.</p>
+</li>
+<li>
+<p>In den alg: Elementen sind die tatsächlich erlaubten Krypto-Algorithmen anzugeben (abhängig
+von der Konfiguration)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Validierung der Metadaten mit dem PVP2 Profil: <a href="http://mdval.test.portalverbund.at/" class="bare">http://mdval.test.portalverbund.at/</a></p>
+</li>
+<li>
+<p>Korrigieren der Metadaten und Wiederholung der Schritte 1 und 2 bis alle Mängel behoben sind.</p>
+</li>
+<li>
+<p>Hochladen in die Metadatenregistry. (Siehe
+<a href="metadataupload.html">Metadaten melden oder aktualisieren</a>)</p>
+</li>
+<li>
+<p>Überprüfen ob die Metadaten korrekt im Metadatenfeed erscheinen.</p>
+</li>
+<li>
+<p>Konfigurieren des SP, dass die Metadaten regelmäßig vom MD-Feed der Testfederation bezogen werden
+(<a href="http://md.test.portalverbund.gv.at/metadata.xml" class="bare">http://md.test.portalverbund.gv.at/metadata.xml</a>). Wird das vom Produkt nicht unterstützt,
+so ist mittles Scripts zu realisieren, dass Download, Signaturprüfung und Import automatisch
+erfolgen.</p>
+</li>
+<li>
+<p>Eintragen des IdP-Discovery Service in der lokalen SP-Konfiguration. Die Adresse ist
+<a href="https://disco.test.portalverbund.gv.at/role/idp.ds" class="bare">https://disco.test.portalverbund.gv.at/role/idp.ds</a>. Achtung! Das Protokoll ist das SAMLDS
+Protokoll, nicht das auf Common Cookies basierende IDP Discovery Profile. Der Aufruf erfolgt über
+einen URL mit folgenden Komponenten:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Hostname + Pfad: <a href="https://disco.test.portalverbund.gv.at/role/idp.ds" class="bare">https://disco.test.portalverbund.gv.at/role/idp.ds</a></p>
+</li>
+<li>
+<p>entityID-Parameter: enthält URL-codierte entityID</p>
+</li>
+<li>
+<p>Return-Pfad: enthält URL-codierte Rückgabeadresse
+<span class="word-wrap">Beispiel: /role/idp.ds?entityID=https%3A%2F%2Fecho.test.portalverbund.gv.at%2Fsp.xml&return=https%3A%2F%2Fecho.test.portalverbund.gv.at%2FShibboleth.sso%2FLogin%3FSAMLDS%3D1%26target%3Dss%253Amem%253A52889d0c6e0396b95f185a65ea888327cabbc23be0657f92544ee43a98d9ca37 </span></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Zum Abschluss sind die Metadaten der eigenen Entity herunterzuladen
+(<a href="https://mdx.text.portalverbund.gv.at" class="bare">https://mdx.text.portalverbund.gv.at</a>) und unter dem EntityDescriptor (als URL) veröffentlichen.</p>
+</li>
+<li>
+<p>Einfacher Test eines SP-initiated Logins mit idp5.test.portalverbund.gv.at. Anmeldung mit
+<a href="mailto:test@hanstest.at">test@hanstest.at</a> /test.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </article>
+</main>
+
+      </div>
+    </div>
+
+    <footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+    <div class="wrap">
+        <div class="footer-content footer-insert">
+            <p class="copyright"><a class="site-link" href="https://www.ref.gv.at/Portalverbund.577.0.html" rel="home">BLSG/AG-IZ</a></p>
+            <p class="credit"></p>
+        </div>
+    </div>
+</footer>
+
+  </body>
+
+</html>
