@@ -904,7 +904,7 @@ Structure and Layout
 
 .site-inner {
   clear: both;
-  padding-top: 50px; }
+  padding-top: 1.3em; }
 
 /* Column Widths and Positions
 --------------------------------------------- */
@@ -1090,7 +1090,7 @@ Site Navigation
 .omega-nav-menu a {
   border: none;
   display: block;
-  padding: 28px 24px;
+  padding: 0.5em 1.5em;
   position: relative; }
 
 .omega-nav-menu ul {
@@ -1398,9 +1398,6 @@ Media Queries
   .site-title {
     text-align: center; }
 
-  .omega-nav-menu a {
-    padding: 12px 12px; }
-
   .omega-nav-menu li.right {
     display: none; }
 
@@ -1510,7 +1507,7 @@ input#subscribe-field {
   padding: 16px !important; }
 
 .nav-primary {
-  background-color: #0099cc;
+  background-color: #c40500;
   width: 100%; }
 
 .omega-nav-menu a {
@@ -1524,6 +1521,10 @@ input#subscribe-field {
 
 .omega-nav-menu ul a:hover {
   background: none repeat scroll 0 0 #17924b; }
+
+.page-description {
+  margin: 0 24px 0.5em 24px;
+  font-size: 1.1em; }
 
 a {
   color: #337ab7; }

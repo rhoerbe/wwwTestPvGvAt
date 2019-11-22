@@ -4,7 +4,7 @@
 
 # configure PASSPHRASE in travis-ci enviromnet
 
-spawn git clone -b gh-pages git@github.com:rhoerbe/wwwTestWpvPvAt.git .
+spawn git clone -b gh-pages git@github.com:rhoerbe/wwwTestPvGvAt.git .
 expect "Enter passphrase for key:"
 send "$env(PASSPHRASE)\n"
 interact

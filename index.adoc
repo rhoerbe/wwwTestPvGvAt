@@ -5,11 +5,11 @@ position: 1
 :showtitle:
 :page-shortname: index
 :page-title: Home
-:page-description: Wirtschaftsportalverbund Testföderation (Home)
+:page-description: Verwaltungsportalverbund Testumgebung
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Zweck
-Zweck der Testföderation ist die Interoperabilität und Konformität von SPs und (sekundär auch) IdPs
+Zweck der Testumgebung ist die Interoperabilität und Konformität von SPs und IdPs
 zu prüfen. Damit soll erreicht werden, dass Produkte auf ihre Konformität mit PVP2 getestet werden
 können, Konfigurationsprobleme erkannt werden bevor eine Instanz in den Produktionsbetrieb
 eingegliedert wird und Sicherheitsprobleme frühzeitig erkannt werden.
@@ -21,31 +21,24 @@ eingegliedert wird und Sicherheitsprobleme frühzeitig erkannt werden.
 * IDP (Einbindung in das Discovery Service; Funktionstest mit dem Echoservice)
 * SP (Verwendung des zentralen IDP Discovery Service; Funktionstest mit den Test-IDPs)
 
-
 == Dienste
 [width="100%", cols="5,12"]
 |====================
 |Metadatenverwaltung | link:metadataupload.html[Metadaten melden oder aktualisieren]
 |Metadatenvalidierung | http://mdval.test.portalverbund.at/
-|Metadaten Feed |http://mdfeed.test.wpv.portalverbund.at/
-|SP1 Echo-Service mit fix eingestelltem IdP | https://sp1.test.wpv.portalverbund.at/
-|SP2 Echo-Service mit zentralem IdP Discovery Service | https://sp2.test.wpv.portalverbund.at:4443/
-|SP3 Echo-Service mit eingebetteten IdP Discovery Service | https://sp3.test.wpv.portalverbund.at/
-|Test IdP | https://idp1.test.wpv.portalverbund.at/idp/status
-|Log Viewer | https://weblog.test.wpv.portalverbund.at/
+|Metadatenpublikation TEST |http://mdfeed.test.portalverbund.gv.at/metadata.xml (link:files/metadata_crt.pem[Signaturzertifikat])
+|Metadatenpublikation QS (vorläufig) |http://mdfeed.test.portalverbund.gv.at/metadata-qs.xml (link:files/metadata_qs_crt.pem[Signaturzertifikat])
+|Echo-Service mit fix eingestelltem IdP | https://echo.test.portalverbund.gv.at/
 |====================
 
 == Metadaten-Feed
 
 Die Metadaten sind regelmäßig (im Produktionsbetrieb z.B. stündlich oder täglich) vom
 Feed zu laden. Dann ist die Signatur zu prüfen und der IDP oder SP bei Änderungen zu 
-aktualisieren. Die Metadaten sind mit folgendem Zertifikat signiert:
-metadata_crt.pem
-link:files/metadata_crt.pem[MD Signaturzertifikat]
+aktualisieren. 
 
 
 == Referenzen
-Die technischen Protokolle des WPV sind in folgeneden Dokumenten definiert
 
 ++++
 <ul><li>
@@ -53,7 +46,9 @@ Die technischen Protokolle des WPV sind in folgeneden Dokumenten definiert
 </li><li>
 <a href="https://www.ref.gv.at/fileadmin/user_upload/PVP2-S-MD_2-1-2_20150601.pdf">PVP2 SAML Metadaten Management Spezifikation V2.1.0</a>
 </li><li>
-<a href="files/WPV-Attribute.pdf">WPV Attribute Standardprofil (Entwurf)</a>
+<a href="https://www.ref.gv.at/fileadmin/user_upload/PVP2-ZD-Policy_1-0_20151111.pdf">Portalverbund Verwaltungsprozesse für zentrale Dienste - PVP2-ZD-Policy 1.0</a>
+</li><li>
+<a href="https://www.ref.gv.at/fileadmin/user_upload/PVP2-AttributeProfile_2-1-2_20150601.pdf">PVP2 eGovernment Attribute Profile</a>
 </li></ul>
-<img src="images/logo.png" alt="Logo" style="display: block; margin-top: 3.5em; margin-left: auto; margin-right: auto; width: 200px;">
+<img src="images/logo.jpg" alt="Logo" style="display: block; margin-top: 3.5em; margin-left: auto; margin-right: auto; width: 200px;">
 ++++

@@ -5,7 +5,7 @@ position: 5
 :page-shortname: HowTo-SP
 :page-title: HowTo SP
 :page-position: 3
-:page-description: Wirtschaftsportalverbund Testföderation (Home)
+:page-description: Verwaltungsportalverbund Testumgebung
 
 == Einbinden eines Service Providers
 
@@ -13,33 +13,35 @@ in die Testfederation erfolgt mittels folgender Schritte:
 
 * Export der Metadaten des SP. Dabei ist zu prüfen, dass die Metadaten den Anforderungen genügen.
   Die automatisch generierten Metadaten sind fast immer unzureichend. Beispiele für korrekte
-  Metadaten sind die Entities für https://mdfeed.test.wpv.portalverbund.at/unsigned/idp1TestWpvPortalverbundAt_idpShibboleth/ed.xml[idp1.test.wpv.portalverbund.at] (IDP) und
-  https://mdfeed.test.wpv.portalverbund.at/unsigned/sp1TestWpvPortalverbundAt_spXml/ed.xml[sp1.test.wpv.portalverbund.at] (SP). Man findes Sie mit der Suchfunktion im MDX-Service.
+  Metadaten sind die Entities für \https://mdfeed.test.portalverbund.gv.at/unsigned/idp5TestPortalverbundGvAt_idpXml.xml[idp5.test.portalverbund.gv.at] (IDP) und
+  \https://mdfeed.test.portalverbund.gv.at/unsigned/sp1TestWpvPortalverbundAt_spXml/ed.xml[sp1.test.portalverbund.gv.at] (SP).
   Typische Mängel sind:
   ** entityID ist kein URI (beginnt nicht mit http://, https:// oder urn://)
-  ** Fehlende EntitityCategory: Welche Attribute zwischen IDP und SP ausgetauscht werden wird über die EntityCategory angegeben, das ist derzeit 
-     nur \http://wirtschaftsportalverbund.at/ns/ec/attributebundle-wkis. Andere Attributangaben in den Metadaten sind nicht maßgeblich und sollten daher entfernt werden.
-  ** In den mdui: Elementen sind sinnvolle Angaben zu ergänzen, um automatisches IDP- und Service Discovery zu steuern.
-  ** In den alg: Elementen sind die tatsächlich erlaubten Krypto-Algorithmen anzugeben (abhängig von der Konfiguration)
-* Validierung der Metadaten gegen XSD und Schematron-Regeln.
+  ** Fehlende EntityCategory: Welche Attribute zwischen IDP und SP ausgetauscht werden wird über die
+     EntityCategory angegeben, das ist derzeit \http://www.ref.gv.at/ns/names/agiz/pvp/egovtoken und
+     \http://www.ref.gv.at/ns/names/agiz/pvp/no-attributes. Andere Attributangaben in den Metadaten
+     sind nicht maßgeblich und sollten daher entfernt werden.
+  ** In den mdui: Elementen sind sinnvolle Angaben zu ergänzen, um automatisches IDP- und Service
+     Discovery zu steuern.
+  ** In den alg: Elementen sind die tatsächlich erlaubten Krypto-Algorithmen anzugeben (abhängig
+     von der Konfiguration)
+* Validierung der Metadaten mit dem PVP2 Profil: http://mdval.test.portalverbund.at/
 * Korrigieren der Metadaten und Wiederholung der Schritte 1 und 2 bis alle Mängel behoben sind.
-* Hochladen in die https://mdreg.test.wpv.portalverbund.at[Metadatenregistry]. Derzeit per Mail an
-  webmaster@wpv.portalverbund.at .
+* Hochladen in die Metadatenregistry. (Siehe
+  link:metadataupload.html[Metadaten melden oder aktualisieren])
 * Überprüfen ob die Metadaten korrekt im Metadatenfeed erscheinen.
 * Konfigurieren des SP, dass die Metadaten regelmäßig vom MD-Feed der Testfederation bezogen werden
-  (http://md.test.wpv.portalverbund.at/testfed-metadata.xml). Wird das vom Produkt nicht unterstützt,
+  (http://mdfeed.test.portalverbund.gv.at/metadata.xml). Wird das vom Produkt nicht unterstützt,
   so ist mittles Scripts zu realisieren, dass Download, Signaturprüfung und Import automatisch
- erfolgen. (Z.B. FEMMA für ADFS)
+  erfolgen.
 * Eintragen des IdP-Discovery Service in der lokalen SP-Konfiguration. Die Adresse ist
-  https://disco.test.wpv.portalverbund.at/role/idp.ds. Achtung! Das Protokoll ist das SAMLDS
-  protokoll, nicht das auf Common Cookies basierende IDP Discovery Profile. Der Aufruf erfolgt über
+  https://disco.test.portalverbund.gv.at/role/idp.ds. Achtung! Das Protokoll ist das SAMLDS
+  Protokoll, nicht das auf Common Cookies basierende IDP Discovery Profile. Der Aufruf erfolgt über
   einen URL mit folgenden Komponenten:
-** Hostname + Pfad: https://disco.test.wpv.portalverbund.at/role/idp.ds
+** Hostname + Pfad: https://disco.test.portalverbund.gv.at/role/idp.ds
 ** entityID-Parameter: enthält URL-codierte entityID
 ** Return-Pfad: enthält URL-codierte Rückgabeadresse
-  +++<span class="word-wrap">Beispiel: /role/idp.ds?entityID=https%3A%2F%2Fecho.test.wpv.portalverbund.at%2Fsp.xml&return=https%3A%2F%2Fecho.test.wpv.portalverbund.at%2FShibboleth.sso%2FLogin%3FSAMLDS%3D1%26target%3Dss%253Amem%253A52889d0c6e0396b95f185a65ea888327cabbc23be0657f92544ee43a98d9ca37 </span>+++
-* Zum Abschluss sind die Metadaten der eigenen Entity herunterzuladen
-  (https://mdx.text.wpv.portalverbund.at) und unter dem EntityDescriptor (als URL) veröffentlichen.
-* Einfacher Test eines SP-initiated Logins mit idp5.test.wpv.portalverbund.at. Anmeldung mit
-  test@hanstest.at /test.
+  +++<span class="word-wrap">Beispiel: /role/idp.ds?entityID=https%3A%2F%2Fecho.test.portalverbund.gv.at%2Fsp.xml&return=https%3A%2F%2Fecho.test.portalverbund.gv.at%2FShibboleth.sso%2FLogin%3FSAMLDS%3D1%26target%3Dss%253Amem%253A52889d0c6e0396b95f185a65ea888327cabbc23be0657f92544ee43a98d9ca37 </span>+++
+* Einfacher Test eines SP-initiated Logins mit idp5.test.portalverbund.gv.at. Anmeldung mit
+  User test@bmspot.gv.at PW test.
 

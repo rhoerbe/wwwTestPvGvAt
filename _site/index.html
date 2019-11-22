@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Home</title>
-  <meta name="description" content="Wirtschaftsportalverbund (WPV) Testföderation">
+  <meta name="description" content="Verwaltungsportalverbund Testumgebung für PVP2-S Profil">
 
   <link rel="stylesheet" href="/css/main.css" />
-  <link rel="canonical" href="https://www.test.wpv.portalverbund.at/" />
-  <link rel="alternate" type="application/rss+xml" title="WPV Testföderation" href="https://www.test.wpv.portalverbund.at/feed.xml" />
+  <link rel="canonical" href="https://www.test.portalverbund.gv.at/" />
+  <link rel="alternate" type="application/rss+xml" title="PVP2-S Testumgebung" href="https://www.test.portalverbund.gv.at/feed.xml" />
 </head>
 
 
@@ -53,6 +53,7 @@
 
     <div class="site-inner">
       <div class="wrap">
+        <h1 class="page-description">Verwaltungsportalverbund Testumgebung</h1>
         <main class="content">
   <header class="post-header">
     <h1 class="post-title">Home</h1>
@@ -65,7 +66,7 @@
 <h2 id="zweck">Zweck</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Zweck der Testföderation ist die Interoperabilität und Konformität von SPs und (sekundär auch) IdPs
+<p>Zweck der Testumgebung ist die Interoperabilität und Konformität von SPs und IdPs
 zu prüfen. Damit soll erreicht werden, dass Produkte auf ihre Konformität mit PVP2 getestet werden
 können, Konfigurationsprobleme erkannt werden bevor eine Instanz in den Produktionsbetrieb
 eingegliedert wird und Sicherheitsprobleme frühzeitig erkannt werden.</p>
@@ -111,28 +112,16 @@ eingegliedert wird und Sicherheitsprobleme frühzeitig erkannt werden.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://mdval.test.portalverbund.at/" class="bare">http://mdval.test.portalverbund.at/</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Metadaten Feed</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://mdfeed.test.wpv.portalverbund.at/" class="bare">http://mdfeed.test.wpv.portalverbund.at/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metadatenpublikation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://mdfeed.test.portalverbund.gv.at/" class="bare">http://mdfeed.test.portalverbund.gv.at/</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SP1 Echo-Service mit fix eingestelltem IdP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://sp1.test.wpv.portalverbund.at/" class="bare">https://sp1.test.wpv.portalverbund.at/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SP2 Echo-Service mit zentralem IdP Discovery Service</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://sp2.test.wpv.portalverbund.at:4443/" class="bare">https://sp2.test.wpv.portalverbund.at:4443/</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SP3 Echo-Service mit eingebetteten IdP Discovery Service</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://sp3.test.wpv.portalverbund.at/" class="bare">https://sp3.test.wpv.portalverbund.at/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Echo-Service mit fix eingestelltem IdP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://echo.test.portalverbund.gv.at/" class="bare">https://echo.test.portalverbund.gv.at/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Test IdP</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://idp1.test.wpv.portalverbund.at/idp/status" class="bare">https://idp1.test.wpv.portalverbund.at/idp/status</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Log Viewer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://weblog.test.wpv.portalverbund.at/" class="bare">https://weblog.test.wpv.portalverbund.at/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://idp5.test.portalverbund.gv.at/idp/status" class="bare">https://idp5.test.portalverbund.gv.at/idp/status</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -153,17 +142,16 @@ metadata_crt.pem
 <div class="sect1">
 <h2 id="referenzen">Referenzen</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p>Die technischen Protokolle des WPV sind in folgeneden Dokumenten definiert</p>
-</div>
 <ul><li>
 <a href="http://reference.e-government.gv.at/fileadmin/user_upload/PVP2-S-Profil_2-1-2_20150601.pdf">PVP V2 S-Profil V2.1.2</a>
 </li><li>
 <a href="https://www.ref.gv.at/fileadmin/user_upload/PVP2-S-MD_2-1-2_20150601.pdf">PVP2 SAML Metadaten Management Spezifikation V2.1.0</a>
 </li><li>
-<a href="files/WPV-Attribute.pdf">WPV Attribute Standardprofil (Entwurf)</a>
+<a href="https://www.ref.gv.at/fileadmin/user_upload/PVP2-ZD-Policy_1-0_20151111.pdf">Portalverbund Verwaltungsprozesse für zentrale Dienste - PVP2-ZD-Policy 1.0</a>
+</li><li>
+<a href="https://www.ref.gv.at/fileadmin/user_upload/PVP2-AttributeProfile_2-1-2_20150601.pdf">PVP2 eGovernment Attribute Profile</a>
 </li></ul>
-<img src="images/logo.png" alt="Logo" style="display: block; margin-top: 3.5em; margin-left: auto; margin-right: auto; width: 200px;">
+<img src="images/logo.jpg" alt="Logo" style="display: block; margin-top: 3.5em; margin-left: auto; margin-right: auto; width: 200px;">
 </div>
 </div>
       </div>
@@ -177,7 +165,7 @@ metadata_crt.pem
     <footer id="footer" class="site-footer" role="contentinfo" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
     <div class="wrap">
         <div class="footer-content footer-insert">
-            <p class="copyright">Copyright © 2016 <a class="site-link" href="https://www.wko.at/Content.Node/AUSTRIAPRO/Startseite---AUSTRIAPRO.html" rel="home">AUSTRIAPRO</a></p>
+            <p class="copyright"><a class="site-link" href="https://www.ref.gv.at/Portalverbund.577.0.html" rel="home">BLSG/AG-IZ</a></p>
             <p class="credit"></p>
         </div>
     </div>

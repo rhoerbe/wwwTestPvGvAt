@@ -1,4 +1,4 @@
-# Static Website Content for www.test.wpv.portalverbund.at
+# Static Website Content for www.test.portalverbund.gv.at
 
 This is the source repository for the web site. The toolchain is as follows:
 

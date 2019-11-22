@@ -5,11 +5,11 @@ position: 2
 :showtitle:
 :page-shortname: Konzepte
 :page-title: Konzepte
-:page-description:  Wirtschaftsportalverbund (WPV): Konzepte
+:page-description: Verwaltungsportalverbund Testumgebung
 
 == Föderation - technische Umsetzung
 
-In der WPV-Föderation werden IdPs und SPs mittels SAML WebSSO miteinander verbunden, sodass SPs das
+Im Portalverbund werden IdPs und SPs mittels SAML WebSSO miteinander verbunden, sodass SPs das
 Benutzerlogin an einen oder mehrere IDPs delegieren können. Die Konfiguration der externen Entitäten
 erfolgt nur über das zentrale Metadatenservice. Die Zusammenschaltung hat mehrere Stufen:
 
@@ -20,7 +20,7 @@ erfolgt nur über das zentrale Metadatenservice. Die Zusammenschaltung hat mehre
    spezifisch pro IdP, generell für alle IdPs, oder für eine Kategorie von IdPs erfolgen.
 3. Für die konkrete Nutzung eines IdP durch einen SP ist auch eine Freischaltung durch den IdP erforderlich. Das umfasst
    erstens die Berechtigung des SP den IdP überhaupt zu nutzten, und zweitens den Umfang der beim
-   Login zu übermittelnden Attribute. Die zu übermittelnden Attribute werden im "WPV-Attribute Profil"
+   Login zu übermittelnden Attribute. Die zu übermittelnden Attribute werden im Dokument "eGovernment Attribute Profil"
    definiert und über eine EntitiyCategory in den Metdaten übermittelt.
 
 
